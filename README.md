@@ -42,6 +42,7 @@ git clone https://github.com/RobertoAssumpcao/animeWatcherFront.git
 
 ```bash
 cd animeWatcherFront
+cd watch
 ```
 
 3. **Instale as dependências:**
