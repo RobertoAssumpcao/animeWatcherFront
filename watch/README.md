@@ -1,126 +1,36 @@
-<div id="top"></div>
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Issues][issues-shield]][issues-url]
+## Getting Started
 
-<br />
-<div align="center">
-  <h1 align="center">Anime Watcher</h1>
-  <h2>Front End</h2>
-
-  <p align="center">
-    <a href="https://github.com/RobertoAssumpcao/animeWatcherFront/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/RobertoAssumpcao/animeWatcherFront/issues">Request Feature</a>
-  </p>
-</div>
-
-## About
-
-Este é o front-end do projeto **Anime Watcher**, construído com **Next.js**, **TypeScript**, **Material UI** e **Axios**, consumindo uma API em Flask.
-
-Ele permite a visualização de animes cadastrados, com uma interface moderna e responsiva, além de integração com a funcionalidade analítica de estatísticas fornecida pelo back-end.
-
----
-
-## Como usar
-
-1. **Clone o repositório:**
-
-```bash
-git clone https://github.com/RobertoAssumpcao/animeWatcherFront.git
-```
-
-2. **Acesse a pasta do projeto:**
-
-```bash
-cd animeWatcherFront
-cd watch
-```
-
-3. **Instale as dependências:**
-
-```bash
-npm install
-```
-
-4. **Rode em modo desenvolvimento:**
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Acesse: [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## 🧠 Funcionalidade Criativa
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Este front consome a rota `/animes/estatisticas`, exibindo:
+## Learn More
 
-- Total de animes cadastrados
-- Média de episódios
-- Quantidade por status (Assistido, Assistindo, etc.)
-- Top 3 animes com mais episódios
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 🐳 Docker
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-1. **Build do projeto:**
+## Deploy on Vercel
 
-```bash
-npm run build
-npm run export
-```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-2. **Build da imagem Docker:**
-
-```bash
-docker build -t anime-watcher-front .
-```
-
-3. **Rodar o container:**
-
-```bash
-docker run -p 3000:80 anime-watcher-front
-```
-
-Acesse: [http://localhost:3000](http://localhost:3000)
-
----
-
-## 📁 Estrutura
-
-```
-animeWatcherFront/
-├── src/
-│   ├── app/
-│   │   └── page.tsx          # Página inicial com listagem
-│   ├── components/
-│   ├── services/
-│   │   └── api.ts            # Axios configurado
-│   └── types/
-│       └── anime.ts          # Tipagem do Anime
-├── Dockerfile
-├── package.json
-```
-
----
-
-## Contribuição
-
-Contribuições são sempre bem-vindas! 💡
-
-1. Faça um fork do projeto  
-2. Crie sua Branch de Feature (`git checkout -b feature/MinhaFuncionalidade`)  
-3. Commit suas alterações (`git commit -m 'Adiciona minha funcionalidade'`)  
-4. Faça o push da sua Branch (`git push origin feature/MinhaFuncionalidade`)  
-5. Abra um Pull Request  
-
-<p align="right">(<a href="#top">voltar ao topo</a>)</p>
-
-[contributors-shield]: https://img.shields.io/github/contributors/RobertoAssumpcao/animeWatcherFront.svg?style=for-the-badge  
-[contributors-url]: https://github.com/RobertoAssumpcao/animeWatcherFront/graphs/contributors  
-[issues-shield]: https://img.shields.io/github/issues/RobertoAssumpcao/animeWatcherFront.svg?style=for-the-badge  
-[issues-url]: https://github.com/RobertoAssumpcao/animeWatcherFront/issues
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
