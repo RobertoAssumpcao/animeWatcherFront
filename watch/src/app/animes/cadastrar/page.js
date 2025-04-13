@@ -32,7 +32,6 @@ export default function CadastrarAnime() {
     setLoading(true)
 
     try {
-      // Busca o gênero do anime via título
       const jikan = await axios.get(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(form.titulo)}`)
       const resultados = jikan.data.data
 
@@ -41,7 +40,6 @@ export default function CadastrarAnime() {
         genero = resultados[0].genres[0].name
       }
 
-      // Cria objeto de dados e converte para URLSearchParams (form-urlencoded)
       const payload = new URLSearchParams()
       payload.append('titulo', form.titulo.trim())
       payload.append('genero', genero)
@@ -64,59 +62,80 @@ export default function CadastrarAnime() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{ py: 5 }}>
-      <Paper elevation={3} sx={{ p: 3, borderRadius: 3 }}>
-        <Typography variant="h5" gutterBottom align="center">
-          Cadastrar Novo Anime
-        </Typography>
-        {erro && <Alert severity="error">{erro}</Alert>}
-        <Box component="form" onSubmit={handleSubmit}>
-          <Stack spacing={2}>
-            <TextField
-              name="titulo"
-              label="Título"
-              value={form.titulo}
-              onChange={handleChange}
-              required
-              fullWidth
-            />
-            <TextField
-              name="episodios"
-              label="Episódios"
-              type="number"
-              inputProps={{ min: 1 }}
-              value={form.episodios}
-              onChange={handleChange}
-              required
-              fullWidth
-            />
-            <TextField
-              name="status"
-              label="Status"
-              select
-              value={form.status}
-              onChange={handleChange}
-              required
-              fullWidth
-            >
-              <MenuItem value="Assistindo">Assistindo</MenuItem>
-              <MenuItem value="Finalizado">Finalizado</MenuItem>
-              <MenuItem value="Pausado">Pausado</MenuItem>
-              <MenuItem value="Abandonado">Abandonado</MenuItem>
-              <MenuItem value="Planejo Assistir">Planejo Assistir</MenuItem>
-            </TextField>
-            <Button
-              type="submit"
-              variant="contained"
-              fullWidth
-              size="large"
-              disabled={loading}
-            >
-              {loading ? 'Cadastrando...' : 'Cadastrar'}
-            </Button>
-          </Stack>
-        </Box>
-      </Paper>
-    </Container>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: 'linear-gradient(to right, #e3f2fd, #fce4ec)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        py: 4
+      }}
+    >
+      <Container maxWidth="sm">
+        <Paper
+          elevation={6}
+          sx={{
+            p: 4,
+            borderRadius: 4,
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <Typography variant="h4" gutterBottom align="center" fontWeight="bold">
+            Cadastrar Novo Anime
+          </Typography>
+
+          {erro && <Alert severity="error" sx={{ mb: 2 }}>{erro}</Alert>}
+
+          <Box component="form" onSubmit={handleSubmit}>
+            <Stack spacing={3}>
+              <TextField
+                name="titulo"
+                label="Título do Anime"
+                value={form.titulo}
+                onChange={handleChange}
+                required
+                fullWidth
+              />
+              <TextField
+                name="episodios"
+                label="Quantidade de Episódios"
+                type="number"
+                inputProps={{ min: 1 }}
+                value={form.episodios}
+                onChange={handleChange}
+                required
+                fullWidth
+              />
+              <TextField
+                name="status"
+                label="Status"
+                select
+                value={form.status}
+                onChange={handleChange}
+                required
+                fullWidth
+              >
+                <MenuItem value="Assistindo">Assistindo</MenuItem>
+                <MenuItem value="Finalizado">Finalizado</MenuItem>
+                <MenuItem value="Pausado">Pausado</MenuItem>
+                <MenuItem value="Abandonado">Abandonado</MenuItem>
+                <MenuItem value="Planejo Assistir">Planejo Assistir</MenuItem>
+              </TextField>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                fullWidth
+                sx={{ py: 1.5, fontWeight: 'bold', letterSpacing: 1 }}
+                disabled={loading}
+              >
+                {loading ? 'Cadastrando...' : 'Cadastrar'}
+              </Button>
+            </Stack>
+          </Box>
+        </Paper>
+      </Container>
+    </Box>
   )
 }

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   Container, Typography, Card, CardContent, CardActions, CardMedia,
-  Button, Grid, CircularProgress, Box, Chip, FormControl, InputLabel, Select, MenuItem
+  Button, Grid, CircularProgress, Box, Chip,
+  FormControl, InputLabel, Select, MenuItem
 } from '@mui/material'
 import { api } from '../../services/api'
 import axios from 'axios'
@@ -99,7 +100,7 @@ export default function ListaAnimes() {
       ) : (
         <Grid container spacing={3}>
           {animesFiltrados.map((anime) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={anime.id}>
+            <Grid item xs={12} sm={6} md={4} key={anime.id}>
               <Card
                 sx={{
                   height: '100%',
