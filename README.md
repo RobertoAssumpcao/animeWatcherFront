@@ -28,6 +28,9 @@ Ele consome uma API Flask (back-end do projeto) e oferece ao usuário uma interf
 - Filtros por status e busca por título
 - Tela de estatísticas (total, média, top 3, etc)
 
+### Fluxograma
+![Fluxograma](fluxo.png)
+
 ---
 
 ## Como usar
@@ -99,6 +102,55 @@ docker run -p 3000:3000 anime-front
   "episodios": 220,
   "status": "Assistindo",
   "data_insercao": "2025-04-10T14:22:00"
+}
+```
+
+---
+
+## 🌐 API Externa Utilizada
+
+Este projeto utiliza a **[Jikan API](https://docs.api.jikan.moe/)** como fonte de dados sobre animes, como gênero e imagens, durante o cadastro e edição de animes.
+
+### 📜 Licença
+
+- A Jikan API é **gratuita**
+- **Não requer autenticação** para uso básico
+- Consulte a [documentação oficial](https://docs.api.jikan.moe/#section/Information/Rate-Limiting) para ver limites de requisição
+
+### 📝 Cadastro
+
+- Não é necessário se cadastrar para consumir a API
+
+### 🔁 Rota utilizada
+
+#### Buscar anime por título:
+```http
+GET https://api.jikan.moe/v4/anime?q={titulo}
+```
+
+##### Exemplo:
+```bash
+GET https://api.jikan.moe/v4/anime?q=Naruto
+```
+
+##### Campos utilizados:
+- `genres[0].name`: usado como gênero
+- `images.jpg.image_url`: imagem para exibir no card
+
+##### Resposta:
+```json
+{
+  "data": [
+    {
+      "title": "Naruto",
+      "genres": [{ "name": "Ação" }],
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/anime/13/17405.jpg"
+        }
+      }
+    }
+  ]
 }
 ```
 
