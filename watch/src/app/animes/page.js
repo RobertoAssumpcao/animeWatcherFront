@@ -37,7 +37,7 @@ export default function ListaAnimes() {
 
   const carregarImagens = async () => {
     const atualizados = await Promise.all(animes.map(async (anime) => {
-      if (anime.imagem) return anime // já tem
+      if (anime.imagem) return anime
       const imagem = await buscarImagem(anime.titulo)
       return { ...anime, imagem }
     }))
@@ -71,7 +71,7 @@ export default function ListaAnimes() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2} flexWrap="wrap" gap={2}>
         <Typography variant="h4">Lista de Animes</Typography>
         <FormControl size="small" sx={{ minWidth: 200 }}>
           <InputLabel>Status</InputLabel>
@@ -99,21 +99,35 @@ export default function ListaAnimes() {
       ) : (
         <Grid container spacing={3}>
           {animesFiltrados.map((anime) => (
-            <Grid item xs={12} sm={6} md={4} key={anime.id}>
-              <Card>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={anime.id}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
                 {anime.imagem ? (
                   <CardMedia
                     component="img"
-                    height="300"
+                    height="280"
                     image={anime.imagem}
                     alt={anime.titulo}
+                    sx={{ objectFit: 'cover' }}
                   />
                 ) : (
-                  <Box height="300px" display="flex" alignItems="center" justifyContent="center" bgcolor="#f0f0f0">
+                  <Box
+                    height="280px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    bgcolor="#f0f0f0"
+                  >
                     <Typography variant="caption">Carregando imagem...</Typography>
                   </Box>
                 )}
-                <CardContent>
+
+                <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6">{anime.titulo}</Typography>
                   <Typography variant="body2">Episódios: {anime.episodios}</Typography>
                   <Typography variant="body2">Gênero: {anime.genero}</Typography>
@@ -124,7 +138,8 @@ export default function ListaAnimes() {
                     sx={{ mt: 1 }}
                   />
                 </CardContent>
-                <CardActions>
+
+                <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
                   <Button
                     size="small"
                     onClick={() => router.push(`/animes/${anime.id}/editar`)}
